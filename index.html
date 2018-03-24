@@ -1,0 +1,36 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">  
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyA_N6qYr7-IoHRxadURT1g8qzadnAk6nKk",
+      authDomain: "hw-jazz-band-trip.firebaseapp.com",
+      databaseURL: "https://hw-jazz-band-trip.firebaseio.com",
+      projectId: "hw-jazz-band-trip",
+      storageBucket: "hw-jazz-band-trip.appspot.com",
+      messagingSenderId: "553162997822"
+    };
+    firebase.initializeApp(config);
+  </script>
+  <title>HW Jazz Messages</title>
+</head>
+<body>
+  <form>
+    <div class="form-check">
+      <label for="message">Message</label>
+      <textarea class="form-control" id="message" rows="3"></textarea>
+    </div>
+    <button type="submit" onsubmit="sendMessage()" class="btn btn-primary">Submit</button>
+  </form>
+  <script>
+    function sendMessage() {
+      var postListRef = firebase.database().ref('messages');
+      var newPostRef = postListRef.push();
+      newPostRef.set($("#message").val());
+    }
+  </script>
+</body>
