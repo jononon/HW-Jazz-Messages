@@ -45,7 +45,7 @@
       newPostRef.on('value', function(snapshot) {
         var val = snapshot.val();
         if(val.done == "Done") {
-          $("#second").html("<p>Sent</p><p><input type=\"button\" value=\"Send Another!\" onClick=\"location.href=location.href\"></p>");
+          $("#second").html("<p>Sent</p><p><button type=\"button\" onClick=\"location.href=location.href\">Send Another!</button></p>");
           clearInterval(interval);
         }
       });
