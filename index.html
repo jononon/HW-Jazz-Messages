@@ -30,7 +30,7 @@
     function sendMessage() {
       var postListRef = firebase.database().ref('messages');
       var newPostRef = postListRef.push();
-      newPostRef.set($("#message").val());
+      newPostRef.set({"message": $("#message").val()});
     }
   </script>
 </body>
