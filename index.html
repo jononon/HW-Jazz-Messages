@@ -19,13 +19,15 @@
   <title>HW Jazz Messages</title>
 </head>
 <body>
-  <form>
-    <div class="form-check">
-      <label for="message">Message</label>
-      <textarea class="form-control" id="message" rows="3"></textarea>
-    </div>
-    <button type="submit" onsubmit="sendMessage()" class="btn btn-primary">Submit</button>
-  </form>
+  <div class="container">
+    <form>
+      <div class="form-check">
+        <label for="message">Message</label>
+        <textarea class="form-control" id="message" rows="3"></textarea>
+      </div>
+      <button type="submit" onsubmit="sendMessage()" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
   <script>
     function sendMessage() {
       var postListRef = firebase.database().ref('messages');
