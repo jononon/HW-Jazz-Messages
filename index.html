@@ -29,9 +29,9 @@
     </form>
   </div>
   <div class="container" id=second>
-    <div class="progress" id="prog">
-      <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-    </div>
+    <p>Submitting</p>
+    <p><img src="https://i.imgur.com/duMuL99.gif" style="width:300px"></p>
+    <p id="est"></p>
   </div>
   <script>
     function sendMessage() {
@@ -42,10 +42,15 @@
       $("#first").hide();
       $("#second").show();
       
+      var secondsLeft = 40;
+      setInterval(function() { $("#est").html(secondsLeft--); });
+      
       newPostRef.on('value', function(snapshot) {
         var val = snapshot.val();
-        $("#prog").html("<div class=\"progress-bar\" role=\"progressbar\" style=\"width: "+Math.round(val.progress/val.total)+"%\" aria-valuenow=\""+Math.round(val.progress/val.total)+"%\" aria-valuemin=\"0\" aria-valuemax=\"100\">"+Math.round(val.progress/val.total)+"</div>");
+        if(val.done == "Done") {
+          $("#second").html("Sent");
+        }
       });
-    }
+    } 
   </script>
 </body>
