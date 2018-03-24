@@ -43,12 +43,13 @@
       $("#second").show();
       
       var secondsLeft = 40;
-      setInterval(function() { $("#est").html(secondsLeft--); });
+      var interval = setInterval(function() { $("#est").html(secondsLeft--); }, 1000);
       
       newPostRef.on('value', function(snapshot) {
         var val = snapshot.val();
         if(val.done == "Done") {
           $("#second").html("Sent");
+          clearInterval(interval);
         }
       });
     } 
