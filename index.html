@@ -42,13 +42,10 @@
       $("#first").hide();
       $("#second").show();
       
-      var secondsLeft = 40;
-      var interval = setInterval(function() { $("#est").html(secondsLeft--); }, 1000);
-      
       newPostRef.on('value', function(snapshot) {
         var val = snapshot.val();
         if(val.done == "Done") {
-          $("#second").html("Sent");
+          $("#second").html("<p>Sent</p><p><input type=\"button\" value=\"Send Another!\" onClick=\"location.href=location.href\"></p>");
           clearInterval(interval);
         }
       });
